@@ -18,7 +18,8 @@ For other distros, you may better look into distro-specific documentation.
 
 Example of usage: `backup-sql ./path-to-config.config`
 
-Configuration file example: ```
+Configuration file example:
+```
 DB_HOST=localhost # Host of database
 DB_USER=testuser # User of database
 DB_BASE=test # Database name
@@ -50,7 +51,8 @@ UserUsername
 UserPassword
 ```
 
-Where: ```
+Where: 
+```
 Username - ssh username
 Password - ssh password
 UserUsername - user from which to kill process (if not specified then killing by sudo)
