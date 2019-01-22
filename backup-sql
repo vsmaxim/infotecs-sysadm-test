@@ -20,6 +20,11 @@ else
 	exit 1
 fi
 
+if [[ !$(test -f $1) ]] ; then
+	echo "BACKUP_PATH: ${BACKUP_PATH} isn't writable or doesn't exist" >&2
+	exit 1
+fi
+
 date_timestamp="$(date +%Y.%m.%d_%H%M%S)"
 # Keeping there "/" after BACKUP_PATH, as there wasn't mentioned about trailing slash in path
 # if we need trailing slash support in configs, then we need to strip it from BACKUP_PATH
