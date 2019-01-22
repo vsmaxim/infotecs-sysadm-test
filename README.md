@@ -31,7 +31,7 @@ BACKUP_PREFIX=sqlbackup # Prefix to every backup file
 
 Crontab example of having script executing on weekdays(excluding sat and sun) at 01:05: `5 1 * * 1-5 /usr/local/bin/backup-sql /etc/backup-sql/backup.config`.
 
-The crontab assumes you have your script at /usr/local/bin/backup-sql and configuration file of it at /etc/backup-sql/backup.config. 
+The crontab assumes you have your script at `/usr/local/bin/backup-sql` and configuration file of it at `/etc/backup-sql/backup.config`. 
 ### IP Scanner script
 
 Example of usage: `ipscaner 192.168.0.0/30`
