@@ -20,7 +20,7 @@ else
 	exit 1
 fi
 
-if [[ !$(test -f $1) ]] ; then
+if [ ! -d "${BACKUP_PATH}" ] ; then
 	echo "BACKUP_PATH: ${BACKUP_PATH} isn't writable or doesn't exist" >&2
 	exit 1
 fi
@@ -34,7 +34,8 @@ log_file="${BACKUP_PATH}/${BACKUP_PREFIX}${date_timestamp}.log"
 log_message "Backup started with pg_dump..." $log_file
 error=$(mktemp)
 trap "rm -rf ${error}" EXIT
-if pg_dump -h ${DB_HOST} -d ${DB_BASE} -U ${DB_USER} -w -F tar -f ${file} 2> "$error"; then
+PG_PASSWORD=${DB_PASS}
+if pg_dump -d "postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_BASE}" -F tar -f ${file} 2> "$error"; then
 	lzip ${file}
 else
 	# Removing file, because pg_dump is creating it in case of fail
